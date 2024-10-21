@@ -55,6 +55,8 @@ cd task-manager
 3. Crie um arquivo `.env` no diretório `backend` com as seguintes variáveis:
 
 ```bash
+POSTGRES_HOST=db # deve ser o mesmo valor que o nome do serviço definido no docker-compose.yaml
+POSTGRES_PORT=5432 # deve ser o mesmo valor que a porta definida no docker-compose.yaml
 POSTGRES_USER=
 POSTGRES_PASSWORD=
 POSTGRES_DB=
@@ -80,6 +82,8 @@ git clone https://github.com/adrianosingolani/task-manager.git
 3. Crie um arquivo `.env` no diretório `backend` com as seguintes variáveis:
 
 ```bash
+POSTGRES_HOST=
+POSTGRES_PORT=
 POSTGRES_USER=
 POSTGRES_PASSWORD=
 POSTGRES_DB=
