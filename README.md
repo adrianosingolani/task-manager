@@ -52,15 +52,15 @@ git clone https://github.com/adrianosingolani/task-manager.git
 cd task-manager
 ```
 
-3. Crie um arquivo `.env` no diretório `backend` com as seguintes variáveis:
+3. Crie um arquivo `.env` no diretório `backend` conforme o exemplo:
 
 ```bash
 POSTGRES_HOST=db # deve ser o mesmo valor que o nome do serviço definido no docker-compose.yaml
-POSTGRES_PORT=5432 # deve ser o mesmo valor que a porta definida no docker-compose.yaml
-POSTGRES_USER=
-POSTGRES_PASSWORD=
-POSTGRES_DB=
-JWT_SECRET=
+POSTGRES_PORT=5432
+POSTGRES_USER=usuario_task_manager_db
+POSTGRES_PASSWORD=senha_task_manager_db
+POSTGRES_DB=task_manager_db
+JWT_SECRET=chave_secreta
 ```
 
 4. Inicie o Docker (certifique-se de ter o Docker instalado):
@@ -82,12 +82,12 @@ git clone https://github.com/adrianosingolani/task-manager.git
 3. Crie um arquivo `.env` no diretório `backend` com as seguintes variáveis:
 
 ```bash
-POSTGRES_HOST=
-POSTGRES_PORT=
-POSTGRES_USER=
-POSTGRES_PASSWORD=
-POSTGRES_DB=
-JWT_SECRET=
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_USER=usuario_task_manager_db
+POSTGRES_PASSWORD=senha_task_manager_db
+POSTGRES_DB=task_manager_db
+JWT_SECRET=chave_secreta
 ```
 
 4. Backend:
