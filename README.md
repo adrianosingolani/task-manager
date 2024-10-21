@@ -35,9 +35,8 @@ Este é um sistema de gerenciamento de tarefas simples, onde os usuários podem 
 ## Requisitos
 
 Para rodar o projeto, você precisará de:
-- **Docker** (recomendado para rodar tanto o frontend quanto o backend)
-- **Node.js** (se preferir rodar localmente sem Docker)
-- **PostgreSQL** para o banco de dados
+- **Docker** (recomendado para rodar tanto o frontend quanto o backend e o banco de dados)
+- Se preferir rodar localmente sem Docker, **Node.js** e **PostgreSQL** para o banco de dados
 
 ## Como Rodar o Projeto
 
@@ -45,7 +44,7 @@ Para rodar o projeto, você precisará de:
 
 1. Clone este repositório:
 ```bash
-git clone https://github.com/seu_usuario/task-manager.git
+git clone https://github.com/adrianosingolani/task-manager.git
 ```
 
 2. Entre na pasta do projeto:
@@ -64,7 +63,7 @@ JWT_SECRET=
 
 4. Inicie o Docker (certifique-se de ter o Docker instalado):
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 5. O frontend estará disponível em [http://localhost:3000](http://localhost:3000) e o backend em [http://localhost:3001](http://localhost:3001).
@@ -73,7 +72,7 @@ docker-compose up --build
 
 1. Clone este repositório:
 ```bash
-git clone https://github.com/seu_usuario/task-manager.git
+git clone https://github.com/adrianosingolani/task-manager.git
 ```
 
 2. Crie e configure o banco de dados PostgreSQL.
@@ -108,6 +107,8 @@ npm run dev
 
 - Implementar paginação.
 - Melhorar a responsividade do design em telas menores.
-- Otimizar performance no carregamento de tarefas.
+- Otimizar performance e experiência do usuário no carregamento de tarefas.
 - Melhorar a segurança do sistema com refresh tokens para prolongar a sessão dos usuários.
-- Criar testes automatizados para garantir a estabilidade da aplicação.
+- Criar testes unitários e de integração para garantir deploy seguro da aplicação.
+- Configurar Docker para produção.
+- Deploy automatizado.
