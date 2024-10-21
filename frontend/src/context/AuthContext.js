@@ -1,8 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { loginUser, logoutUser, getUserProfile } from '../services/auth';
+import { useRouter, usePathname } from 'next/navigation';
+import { signupUser, loginUser, logoutUser, getUserProfile } from '../services/auth';
 
 const AuthContext = createContext();
 
@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkUserLoggedIn = async () => {
@@ -18,13 +19,26 @@ export const AuthProvider = ({ children }) => {
         setUser(userProfile);
       } catch (err) {
         setUser(null);
-        router.push('/login');
+        if (pathname !== '/login' && pathname !== '/signup') {
+          router.push('/login');
+        }
       } finally {
         setLoading(false);
       }
     };
     checkUserLoggedIn();
   }, [router]);
+
+  const signup = async (name, email, password) => {
+    try {
+      const newUser = await signupUser(name, email, password);
+      setUser(newUser);
+      router.push('/tasks');
+    } catch (error) {
+      console.error(error.message);
+      throw error;
+    }
+  };
 
   const login = async (email, password) => {
     try {
@@ -47,7 +61,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, signup, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

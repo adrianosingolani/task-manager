@@ -6,18 +6,19 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '../../context/AuthContext';
 import PageTitle from '../../components/PageTitle';
 
-export default function Login() {
-  const { login } = useAuth();
+export default function Signup() {
+  const { signup } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleLogin = async (values) => {
+  const handleSignup = async (values) => {
     setError('');
     setLoading(true);
 
     try {
-      await login(values.email, values.password);
+      const response = await signup(values.name, values.email, values.password);
+      console.log(response);
       router.push('/tasks');
     } catch (err) {
       setError(err.message);
@@ -42,7 +43,7 @@ export default function Login() {
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-          <PageTitle>Login</PageTitle>
+          <PageTitle>Cadastro</PageTitle>
         </div>
 
         {error && (
@@ -54,7 +55,15 @@ export default function Login() {
           />
         )}
 
-        <Form onFinish={handleLogin} layout="vertical">
+        <Form onFinish={handleSignup} layout="vertical">
+          <Form.Item
+            label="Nome"
+            name="name"
+            rules={[{ required: true, message: 'Por favor, insira seu nome!' }]}
+          >
+            <Input placeholder="Digite seu nome" />
+          </Form.Item>
+
           <Form.Item
             label="Email"
             name="email"
@@ -82,12 +91,12 @@ export default function Login() {
                 borderColor: '#082BF2',
               }}
             >
-              Entrar
+              Cadastrar
             </Button>
           </Form.Item>
         </Form>
         <div>
-          <a href="/signup">Criar uma conta</a>
+          <a href="/login">Já tem uma conta? Faça login</a>
         </div>
       </div>
     </div>
